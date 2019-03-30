@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
+var port = process.env.PORT || 8080;
+
 // connect to MongoDB
 mongoose.connect('mongodb://localhost/testForAuth');
 var db = mongoose.connection;
@@ -49,5 +51,5 @@ app.use(function(err, req, res, next) {
 });
 
 // listen on port 3000
-app.listen(3000,
-           function() { console.log('Express app listening on port 3000'); });
+app.listen(port);
+console.log('The magic happens on port ' + port);
