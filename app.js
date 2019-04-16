@@ -35,6 +35,12 @@ app.use(expectCt({
     maxAge: 2592000
 }))
 
+// X-Frame-Options 
+const frameguard = require('frameguard')
+
+// Don't allow me to be in ANY frames:
+app.use(frameguard({ action: 'deny' }))
+
 // use sessions for tracking logins
 app.use(session({
     secret: 'NetworkSecurityLoginPage',
