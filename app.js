@@ -5,10 +5,11 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 
 // connect to MongoDB
-mongoose.connect('mongodb://localhost/testForAuth');
+mongoose.connect("mongodb+srv://supakornbabe:babe3000@cluster0-txdl5.gcp.mongodb.net/test?retryWrites=true");
+// mongoose.connect('mongodb://mongo:27017/testForAuth');
 var db = mongoose.connection;
 
 // handle mongo error
@@ -17,9 +18,15 @@ db.once('open', function() {
     // we're connected!
 });
 
+// use helmet for protection
+var helmet = require('helmet')
+app.use(helmet())
+app.disable('x-powered-by')
+app.set('trust proxy', 1)
+
 // use sessions for tracking logins
 app.use(session({
-    secret : 'work hard',
+    secret : 'NetworkSecurityLoginPage',
     resave : true,
     saveUninitialized : false,
     store : new MongoStore({mongooseConnection : db})
