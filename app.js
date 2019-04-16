@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var expectCt = require('expect-ct')
+var validator  = require('express-validator');
 
 var port = process.env.PORT || 3000;
 
@@ -31,7 +32,7 @@ app.use(helmet.dnsPrefetchControl())
 // Sets Expect-CT: enforce, max-age=123
 app.use(expectCt({
     enforce: true,
-    maxAge: 123
+    maxAge: 2592000
 }))
 
 // use sessions for tracking logins
@@ -49,6 +50,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
+app.use(validator());
+app.use(function(req, res, next) {
+  for (var item in req.body) {
+    req.sanitize(item).escape();
+  }
+  next();
+});
 
 // serve static files from template
 app.use(express.static(__dirname + '/templateLogReg'));
