@@ -24,6 +24,9 @@ app.use(helmet())
 app.disable('x-powered-by')
 app.set('trust proxy', 1)
 
+// Sets "X-DNS-Prefetch-Control: off".
+app.use(helmet.dnsPrefetchControl({ allow: false }))
+
 // use sessions for tracking logins
 app.use(session({
     secret : 'NetworkSecurityLoginPage',
