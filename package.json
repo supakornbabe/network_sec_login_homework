@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "connect-mongo": "^2.0.3",
+    "expect-ct": "^0.1.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "hash.js": "^1.1.7",
