@@ -26,10 +26,7 @@ app.disable('x-powered-by')
 app.set('trust proxy', 1)
 
 // Sets "X-DNS-Prefetch-Control: off".
-app.use(helmet.dnsPrefetchControl({
-    allow: true
-}))
-
+app.use(helmet.dnsPrefetchControl())
 
 // Sets Expect-CT: enforce, max-age=123
 app.use(expectCt({
