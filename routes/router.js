@@ -87,4 +87,9 @@ router.get('/logout', function (req, res, next) {
     }
 });
 
+// GET for loader.io
+router.get('/loaderio-3203768eba4216e84987498f1771c83e', function (req, res, next) {
+    return res.send("loaderio-3203768eba4216e84987498f1771c83e")
+});
+
 module.exports = router;
