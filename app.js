@@ -7,7 +7,7 @@ var MongoStore = require('connect-mongo')(session);
 var expectCt = require('expect-ct')
 var validator  = require('express-validator');
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 // connect to MongoDB
 mongoose.connect("mongodb+srv://supakornbabe:babe3000@cluster0-txdl5.gcp.mongodb.net/test?retryWrites=true");
