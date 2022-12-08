@@ -12,7 +12,7 @@
   "dependencies": {
     "connect-mongo": "^2.0.3",
     "expect-ct": "^0.1.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.1",
     "frameguard": "^3.0.0",
